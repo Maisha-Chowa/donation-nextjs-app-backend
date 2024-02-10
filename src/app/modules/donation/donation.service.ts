@@ -1,22 +1,21 @@
 import { SortOrder } from "mongoose";
 import { IGenericResponse } from "../../../interfaces/common";
-import { eyeGlassSearchableFields } from "./eyeglass.constants";
-import { IEyeGlass, IEyeGlassFilters } from "./eyeglass.interface";
-import { eyeglassModel } from "./eyeglass.model";
+import { donationSearchableFields } from "./donation.constants";
+import { Idonation, IdonationFilters } from "./donation.interface";
+import { donationModel } from "./donation.model";
 import { paginationHelpers } from "../../../helpers/paginationHelpers";
 import { IPaginationOptions } from "../../../interfaces/pagination";
-import httpStatus from "http-status";
-import ApiError from "../../../errors/ApiError";
 
-const createEyeGlass = async (payload: IEyeGlass): Promise<IEyeGlass> => {
-  const result = await eyeglassModel.create(payload);
+
+const createdonation = async (payload: Idonation): Promise<Idonation> => {
+  const result = await donationModel.create(payload);
   return result;
 };
 
-const getAllEyeGlass = async (
-  filters: IEyeGlassFilters,
+const getAlldonation = async (
+  filters: IdonationFilters,
   paginationOptions: IPaginationOptions
-): Promise<IGenericResponse<IEyeGlass[]>> => {
+): Promise<IGenericResponse<Idonation[]>> => {
   const { searchTerm, ...filtersData } = filters;
 
   const { page, limit, skip, sortBy, sortOrder } =
@@ -25,7 +24,7 @@ const getAllEyeGlass = async (
   const andConditions = [];
   if (searchTerm) {
     andConditions.push({
-      $or: eyeGlassSearchableFields.map((field) => ({
+      $or: donationSearchableFields.map((field) => ({
         [field]: {
           $regex: searchTerm,
           $options: "i",
@@ -52,13 +51,13 @@ const getAllEyeGlass = async (
           $and: andConditions,
         }
       : {};
-  const result = await eyeglassModel
+  const result = await donationModel
     .find(whereConditions)
     .sort(sortConditions)
     .skip(skip)
     .limit(limit);
 
-  const total = await eyeglassModel.countDocuments();
+  const total = await donationModel.countDocuments();
 
   return {
     meta: {
@@ -70,16 +69,16 @@ const getAllEyeGlass = async (
   };
 };
 
-const getSingleEyeGlass = async (id: string): Promise<IEyeGlass | null> => {
-  const result = await eyeglassModel.findById(id);
+const getSingledonation = async (id: string): Promise<Idonation | null> => {
+  const result = await donationModel.findById(id);
   return result;
 };
 
-const updateEyeGlass = async (
+const updatedonation = async (
   id: string,
-  payload: IEyeGlass
-): Promise<IEyeGlass | null> => {
-  const result = await eyeglassModel.findOneAndUpdate(
+  payload: Idonation
+): Promise<Idonation | null> => {
+  const result = await donationModel.findOneAndUpdate(
     {
       _id: id,
     },
@@ -90,14 +89,14 @@ const updateEyeGlass = async (
   );
   return result;
 };
-const deleteEyeGlass = async (id: string) => {
-  const result = await eyeglassModel.findByIdAndDelete(id);
+const deletedonation = async (id: string) => {
+  const result = await donationModel.findByIdAndDelete(id);
   // return result
 };
-export const eyeGlassService = {
-  createEyeGlass,
-  getAllEyeGlass,
-  getSingleEyeGlass,
-  updateEyeGlass,
-  deleteEyeGlass,
+export const donationService = {
+  createdonation,
+  getAlldonation,
+  getSingledonation,
+  updatedonation,
+  deletedonation,
 };

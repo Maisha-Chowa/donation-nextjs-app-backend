@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const user_route_1 = require("../modules/user/user.route");
-const eyeglass_route_1 = require("../modules/eyeglass/eyeglass.route");
+const donation_route_1 = require("../modules/donation/donation.route");
 const salesManagement_route_1 = require("../modules/salesManagement/salesManagement.route");
 const router = express_1.default.Router();
 const routes = [
@@ -14,8 +14,8 @@ const routes = [
         route: user_route_1.UserRoutes,
     },
     {
-        path: "/eyeglass",
-        route: eyeglass_route_1.eyeglassRoutes,
+        path: "/donation",
+        route: donation_route_1.donationRoutes,
     },
     {
         path: "/salesManagement",

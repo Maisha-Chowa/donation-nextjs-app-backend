@@ -1,6 +1,6 @@
 import express from "express";
 import { UserRoutes } from "../modules/user/user.route";
-import { eyeglassRoutes } from "../modules/eyeglass/eyeglass.route";
+import { donationRoutes } from "../modules/donation/donation.route";
 import { salesManagementRoutes } from "../modules/salesManagement/salesManagement.route";
 const router = express.Router();
 const routes = [
@@ -9,8 +9,8 @@ const routes = [
     route: UserRoutes,
   },
   {
-    path: "/eyeglass",
-    route: eyeglassRoutes,
+    path: "/donation",
+    route: donationRoutes,
   },
   {
     path: "/salesManagement",
