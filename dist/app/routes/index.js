@@ -7,6 +7,7 @@ const express_1 = __importDefault(require("express"));
 const user_route_1 = require("../modules/user/user.route");
 const donation_route_1 = require("../modules/donation/donation.route");
 const salesManagement_route_1 = require("../modules/salesManagement/salesManagement.route");
+const auth_route_1 = require("../modules/auth/auth.route");
 const router = express_1.default.Router();
 const routes = [
     {
@@ -16,6 +17,10 @@ const routes = [
     {
         path: "/donation",
         route: donation_route_1.donationRoutes,
+    },
+    {
+        path: '/auth',
+        route: auth_route_1.AuthRoutes,
     },
     {
         path: "/salesManagement",

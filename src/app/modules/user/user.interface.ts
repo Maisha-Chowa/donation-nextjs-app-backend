@@ -1,9 +1,6 @@
-import { Model } from "mongoose";
-
-export type IUser = {
-  role: string;
+export interface IUser {
+  username: string;
   email: string;
   password: string;
-};
-
-export type UserModel = Model<IUser>;
+  role: "admin" | "user";
+}

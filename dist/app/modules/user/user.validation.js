@@ -1,17 +1,24 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.UserValidation = void 0;
+exports.UserValidations = exports.updateUserValidationSchema = exports.createUserValidationSchema = void 0;
 const zod_1 = require("zod");
-const createUserZodSchema = zod_1.z.object({
+exports.createUserValidationSchema = zod_1.z.object({
     body: zod_1.z.object({
-        email: zod_1.z.string({
-            required_error: "Email is required"
-        }),
-        password: zod_1.z.string({
-            required_error: "Password is required"
-        })
+        username: zod_1.z.string(),
+        email: zod_1.z.string().email(),
+        password: zod_1.z.string(),
+        role: zod_1.z.enum(["admin", "user"]).optional(),
     }),
 });
-exports.UserValidation = {
-    createUserZodSchema,
+exports.updateUserValidationSchema = zod_1.z.object({
+    body: zod_1.z.object({
+        username: zod_1.z.string().optional(),
+        email: zod_1.z.string().email().optional(),
+        password: zod_1.z.string().optional(),
+        role: zod_1.z.enum(["admin", "user"]).optional(),
+    }),
+});
+exports.UserValidations = {
+    createUserValidationSchema: exports.createUserValidationSchema,
+    updateUserValidationSchema: exports.updateUserValidationSchema,
 };

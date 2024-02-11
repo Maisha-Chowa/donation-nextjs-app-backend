@@ -1,15 +1,29 @@
 import express from "express";
-import { UserController } from "./user.controller";
-import { UserValidation } from "./user.validation";
 import validateRequest from "../../middlewares/validateRequest";
+import { UserController } from "./user.controller";
+import {
+  createUserValidationSchema,
+  updateUserValidationSchema,
+} from "./user.validation";
+
 const router = express.Router();
 
 router.post(
-  "/create-user",
-  validateRequest(UserValidation.createUserZodSchema),
+  "/",
+  validateRequest(createUserValidationSchema),
   UserController.createUser
 );
 
-// auth(ENUM_USER_ROLE.SUPER_ADMIN, ENUM_USER_ROLE.ADMIN),
+router.get("/", UserController.getAllUsers);
+
+router.get("/:id", UserController.findUserById);
+
+router.patch(
+  "/:id",
+  validateRequest(updateUserValidationSchema),
+  UserController.updateUserById
+);
+
+router.delete("/:id", UserController.deleteUserById);
 
 export const UserRoutes = router;

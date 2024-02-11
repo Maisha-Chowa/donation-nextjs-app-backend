@@ -8,15 +8,51 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.userService = void 0;
+exports.UserService = void 0;
+const bycryptHelper_1 = require("../../../shared/bycryptHelper");
+const QueryBuilder_1 = __importDefault(require("../../builder/QueryBuilder"));
+const user_constant_1 = require("./user.constant");
 const user_model_1 = require("./user.model");
 const createUser = (user) => __awaiter(void 0, void 0, void 0, function* () {
-    // set role
-    user.role = "admin";
-    const result = yield user_model_1.User.create(user);
+    const hashedPassword = yield bycryptHelper_1.bcryptHelper.hashPassword(user.password);
+    return yield user_model_1.User.create(Object.assign(Object.assign({}, user), { password: hashedPassword }));
+});
+const findUserById = (userId) => __awaiter(void 0, void 0, void 0, function* () {
+    return yield user_model_1.User.findById(userId);
+});
+const getAllUsers = (query) => __awaiter(void 0, void 0, void 0, function* () {
+    const userQuery = new QueryBuilder_1.default(user_model_1.User.find(), query)
+        .search(user_constant_1.UserSearchableFields)
+        .filter()
+        .sort()
+        .paginate()
+        .fields();
+    const result = yield userQuery.modelQuery;
+    const metaData = yield userQuery.countTotal();
+    return {
+        meta: metaData,
+        data: result,
+    };
+});
+const updateUserById = (userId, payload) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield user_model_1.User.findByIdAndUpdate({ _id: userId }, payload, {
+        new: true,
+        runValidators: true,
+    });
     return result;
 });
-exports.userService = {
+const deleteUserById = (userId) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield user_model_1.User.findByIdAndDelete(userId);
+    return result;
+});
+exports.UserService = {
     createUser,
+    findUserById,
+    getAllUsers,
+    updateUserById,
+    deleteUserById,
 };

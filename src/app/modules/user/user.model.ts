@@ -1,30 +1,26 @@
-import { Schema, model } from "mongoose";
-import { IUser, UserModel } from "./user.interface";
-import bcrypt from "bcrypt";
-import config from "../../../config";
+import mongoose, { Schema } from "mongoose";
+import { IUser } from "./user.interface";
 
-const UserSchema = new Schema<IUser>({
-  role: {
+const userSchema: Schema<IUser> = new mongoose.Schema({
+  username: {
     type: String,
+    required: true,
+    unique: true,
   },
   email: {
     type: String,
     required: true,
+    unique: true,
   },
   password: {
     type: String,
     required: true,
   },
+  role: {
+    type: String,
+    enum: ["admin", "user"],
+    default: "user",
+  },
 });
 
-UserSchema.pre("save", async function (next) {
-  //hashing user password
-  const user = this;
-  user.password = await bcrypt.hash(
-    user.password,
-    Number(config.bcrypt_salt_rounds)
-  );
-  next();
-});
-
-export const User = model<IUser, UserModel>("User", UserSchema);
+export const User = mongoose.model<IUser>("User", userSchema);
