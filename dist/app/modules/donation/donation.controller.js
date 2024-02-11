@@ -26,7 +26,7 @@ const createdonation = (0, catchAsync_1.default)((req, res) => __awaiter(void 0,
     (0, sendResponse_1.default)(res, {
         statusCode: http_status_1.default.OK,
         success: true,
-        message: "eye glass created successfully",
+        message: "donation created successfully",
         data: result,
     });
 }));
@@ -37,7 +37,7 @@ const getAlldonation = (0, catchAsync_1.default)((req, res) => __awaiter(void 0,
     (0, sendResponse_1.default)(res, {
         statusCode: http_status_1.default.OK,
         success: true,
-        message: "Eye Glass retrieved successfully",
+        message: "donation retrieved successfully",
         meta: result.meta,
         data: result.data,
     });
@@ -48,7 +48,7 @@ const getSingledonation = (0, catchAsync_1.default)((req, res) => __awaiter(void
     (0, sendResponse_1.default)(res, {
         statusCode: http_status_1.default.OK,
         success: true,
-        message: "Eye Glass retrieved successfully !",
+        message: "donation retrieved successfully !",
         data: result,
     });
 }));
@@ -69,7 +69,7 @@ const deletedonation = (0, catchAsync_1.default)((req, res) => __awaiter(void 0,
     (0, sendResponse_1.default)(res, {
         statusCode: http_status_1.default.OK,
         success: true,
-        message: "Eye Glass deleted successfully !",
+        message: "donation deleted successfully !",
         //data: result,
     });
 }));

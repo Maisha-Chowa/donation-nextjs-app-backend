@@ -25,6 +25,19 @@ const donationSchema = new Schema<Idonation>(
       type: String,
       required: true,
     },
+    collectedAmount: {
+      type: String,
+    },
+    endDate: {
+      type: String,
+      required: true,
+    },
+
+    donators: [
+      {
+        type: String,
+      },
+    ],
   },
   {
     timestamps: true,

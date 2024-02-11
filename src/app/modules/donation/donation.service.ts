@@ -6,8 +6,8 @@ import { donationModel } from "./donation.model";
 import { paginationHelpers } from "../../../helpers/paginationHelpers";
 import { IPaginationOptions } from "../../../interfaces/pagination";
 
-
 const createdonation = async (payload: Idonation): Promise<Idonation> => {
+  payload.collectedAmount = "0";
   const result = await donationModel.create(payload);
   return result;
 };

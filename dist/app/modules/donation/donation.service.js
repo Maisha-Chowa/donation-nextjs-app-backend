@@ -25,6 +25,7 @@ const donation_constants_1 = require("./donation.constants");
 const donation_model_1 = require("./donation.model");
 const paginationHelpers_1 = require("../../../helpers/paginationHelpers");
 const createdonation = (payload) => __awaiter(void 0, void 0, void 0, function* () {
+    payload.collectedAmount = "0";
     const result = yield donation_model_1.donationModel.create(payload);
     return result;
 });

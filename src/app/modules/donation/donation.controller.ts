@@ -15,7 +15,7 @@ const createdonation = catchAsync(async (req: Request, res: Response) => {
   sendResponse<Idonation>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: "eye glass created successfully",
+    message: "donation created successfully",
     data: result,
   });
 });
@@ -31,7 +31,7 @@ const getAlldonation = catchAsync(async (req: Request, res: Response) => {
   sendResponse<Idonation[]>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: "Eye Glass retrieved successfully",
+    message: "donation retrieved successfully",
     meta: result.meta,
     data: result.data,
   });
@@ -43,7 +43,7 @@ const getSingledonation = catchAsync(async (req: Request, res: Response) => {
   sendResponse<Idonation>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: "Eye Glass retrieved successfully !",
+    message: "donation retrieved successfully !",
     data: result,
   });
 });
@@ -68,7 +68,7 @@ const deletedonation = catchAsync(async (req: Request, res: Response) => {
   sendResponse<Idonation>(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: "Eye Glass deleted successfully !",
+    message: "donation deleted successfully !",
     //data: result,
   });
 });

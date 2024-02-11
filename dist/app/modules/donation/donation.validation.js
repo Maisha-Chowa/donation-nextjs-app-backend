@@ -22,6 +22,11 @@ const createdonationZodSchema = zod_1.default.object({
         amount: zod_1.default.string({
             required_error: "Donation  amount is required",
         }),
+        collectedAmount: zod_1.default.string().optional(),
+        endDate: zod_1.default.string({
+            required_error: "Donation  amount is required",
+        }),
+        donators: zod_1.default.array(zod_1.default.string()).optional(),
     }),
 });
 const updatedonationZodSchema = zod_1.default.object({
@@ -31,6 +36,9 @@ const updatedonationZodSchema = zod_1.default.object({
         category: zod_1.default.string().optional(),
         description: zod_1.default.string().optional(),
         amount: zod_1.default.string().optional(),
+        collectedAmount: zod_1.default.string().optional(),
+        endDate: zod_1.default.string().optional(),
+        donators: zod_1.default.array(zod_1.default.string()).optional(),
     }),
 });
 exports.donationValidation = {

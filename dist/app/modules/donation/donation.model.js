@@ -37,6 +37,18 @@ const donationSchema = new mongoose_1.Schema({
         type: String,
         required: true,
     },
+    collectedAmount: {
+        type: String,
+    },
+    endDate: {
+        type: String,
+        required: true,
+    },
+    donators: [
+        {
+            type: String,
+        },
+    ],
 }, {
     timestamps: true,
     toJSON: {

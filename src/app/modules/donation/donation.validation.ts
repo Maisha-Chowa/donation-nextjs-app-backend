@@ -17,6 +17,11 @@ const createdonationZodSchema = z.object({
     amount: z.string({
       required_error: "Donation  amount is required",
     }),
+    collectedAmount: z.string().optional(),
+    endDate: z.string({
+      required_error: "Donation  amount is required",
+    }),
+    donators: z.array(z.string()).optional(),
   }),
 });
 
@@ -25,8 +30,12 @@ const updatedonationZodSchema = z.object({
     title: z.string().optional(),
     image: z.string().optional(),
     category: z.string().optional(),
+
     description: z.string().optional(),
     amount: z.string().optional(),
+    collectedAmount: z.string().optional(),
+    endDate: z.string().optional(),
+    donators: z.array(z.string()).optional(),
   }),
 });
 
