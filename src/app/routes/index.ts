@@ -1,7 +1,6 @@
 import express from "express";
 import { UserRoutes } from "../modules/user/user.route";
 import { donationRoutes } from "../modules/donation/donation.route";
-import { salesManagementRoutes } from "../modules/salesManagement/salesManagement.route";
 import { AuthRoutes } from "../modules/auth/auth.route";
 const router = express.Router();
 const routes = [
@@ -14,12 +13,8 @@ const routes = [
     route: donationRoutes,
   },
   {
-    path: '/auth',
+    path: "/auth",
     route: AuthRoutes,
-  },
-  {
-    path: "/salesManagement",
-    route: salesManagementRoutes,
   },
 ];
 

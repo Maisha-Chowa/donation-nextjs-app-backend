@@ -5,6 +5,7 @@ import { Idonation, IdonationFilters } from "./donation.interface";
 import { donationModel } from "./donation.model";
 import { paginationHelpers } from "../../../helpers/paginationHelpers";
 import { IPaginationOptions } from "../../../interfaces/pagination";
+import { getDonationCollectedAMount } from "./donation.utils";
 
 const createdonation = async (payload: Idonation): Promise<Idonation> => {
   payload.collectedAmount = "0";
