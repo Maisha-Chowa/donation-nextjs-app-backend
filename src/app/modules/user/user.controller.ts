@@ -27,6 +27,19 @@ const findUserById = catchAsync(async (req, res) => {
   });
 });
 
+const findUserByEamil = catchAsync(async (req, res) => {
+  const { email } = req.params;
+  console.log(email);
+  const result = await UserService.findUserByEamil(email);
+
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "User is retrieved succesfully",
+    data: result,
+  });
+});
+
 const getAllUsers = catchAsync(async (req, res) => {
   const result = await UserService.getAllUsers(req.query);
 
@@ -69,4 +82,5 @@ export const UserController = {
   getAllUsers,
   updateUserById,
   deleteUserById,
+  findUserByEamil,
 };

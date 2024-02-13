@@ -4,7 +4,6 @@ import { IUser } from "./user.interface";
 const userSchema: Schema<IUser> = new mongoose.Schema({
   username: {
     type: String,
-    required: true,
     unique: true,
   },
   email: {
@@ -21,6 +20,16 @@ const userSchema: Schema<IUser> = new mongoose.Schema({
     enum: ["admin", "user"],
     default: "user",
   },
+  donatedAmount: {
+    type: String,
+    default: "0",
+  },
+  donations: [
+    {
+      type: String,
+      default: "",
+    },
+  ],
 });
 
 export const User = mongoose.model<IUser>("User", userSchema);

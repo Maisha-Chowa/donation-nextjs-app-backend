@@ -8,7 +8,6 @@ const mongoose_1 = __importDefault(require("mongoose"));
 const userSchema = new mongoose_1.default.Schema({
     username: {
         type: String,
-        required: true,
         unique: true,
     },
     email: {
@@ -25,5 +24,15 @@ const userSchema = new mongoose_1.default.Schema({
         enum: ["admin", "user"],
         default: "user",
     },
+    donatedAmount: {
+        type: String,
+        default: "0",
+    },
+    donations: [
+        {
+            type: String,
+            default: "",
+        },
+    ],
 });
 exports.User = mongoose_1.default.model("User", userSchema);

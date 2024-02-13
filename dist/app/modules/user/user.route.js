@@ -12,6 +12,7 @@ const router = express_1.default.Router();
 router.post("/", (0, validateRequest_1.default)(user_validation_1.createUserValidationSchema), user_controller_1.UserController.createUser);
 router.get("/", user_controller_1.UserController.getAllUsers);
 router.get("/:id", user_controller_1.UserController.findUserById);
+router.get("/:email", user_controller_1.UserController.findUserByEamil);
 router.patch("/:id", (0, validateRequest_1.default)(user_validation_1.updateUserValidationSchema), user_controller_1.UserController.updateUserById);
 router.delete("/:id", user_controller_1.UserController.deleteUserById);
 exports.UserRoutes = router;

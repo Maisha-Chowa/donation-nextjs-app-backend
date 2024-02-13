@@ -36,6 +36,17 @@ const findUserById = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, v
         data: result,
     });
 }));
+const findUserByEamil = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    const { email } = req.params;
+    console.log(email);
+    const result = yield user_service_1.UserService.findUserByEamil(email);
+    (0, sendResponse_1.default)(res, {
+        statusCode: http_status_1.default.OK,
+        success: true,
+        message: "User is retrieved succesfully",
+        data: result,
+    });
+}));
 const getAllUsers = (0, catchAsync_1.default)((req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const result = yield user_service_1.UserService.getAllUsers(req.query);
     (0, sendResponse_1.default)(res, {
@@ -72,4 +83,5 @@ exports.UserController = {
     getAllUsers,
     updateUserById,
     deleteUserById,
+    findUserByEamil,
 };

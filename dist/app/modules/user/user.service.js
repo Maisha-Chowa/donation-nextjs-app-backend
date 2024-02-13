@@ -24,6 +24,9 @@ const createUser = (user) => __awaiter(void 0, void 0, void 0, function* () {
 const findUserById = (userId) => __awaiter(void 0, void 0, void 0, function* () {
     return yield user_model_1.User.findById(userId);
 });
+const findUserByEamil = (email) => __awaiter(void 0, void 0, void 0, function* () {
+    return yield user_model_1.User.find({ email: email });
+});
 const getAllUsers = (query) => __awaiter(void 0, void 0, void 0, function* () {
     const userQuery = new QueryBuilder_1.default(user_model_1.User.find(), query)
         .search(user_constant_1.UserSearchableFields)
@@ -55,4 +58,5 @@ exports.UserService = {
     getAllUsers,
     updateUserById,
     deleteUserById,
+    findUserByEamil,
 };

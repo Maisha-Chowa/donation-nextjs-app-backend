@@ -8,6 +8,8 @@ exports.createUserValidationSchema = zod_1.z.object({
         email: zod_1.z.string().email(),
         password: zod_1.z.string(),
         role: zod_1.z.enum(["admin", "user"]).optional(),
+        donatedAmount: zod_1.z.string().optional(),
+        donations: zod_1.z.string().optional(),
     }),
 });
 exports.updateUserValidationSchema = zod_1.z.object({
@@ -16,6 +18,8 @@ exports.updateUserValidationSchema = zod_1.z.object({
         email: zod_1.z.string().email().optional(),
         password: zod_1.z.string().optional(),
         role: zod_1.z.enum(["admin", "user"]).optional(),
+        donatedAmount: zod_1.z.string().optional(),
+        donations: zod_1.z.string().optional(),
     }),
 });
 exports.UserValidations = {
