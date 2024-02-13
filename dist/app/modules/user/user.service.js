@@ -41,10 +41,11 @@ const getAllUsers = (query) => __awaiter(void 0, void 0, void 0, function* () {
         data: result,
     };
 });
-const updateUserById = (userId, payload) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield user_model_1.User.findByIdAndUpdate({ _id: userId }, payload, {
+const updateUserById = (id, payload) => __awaiter(void 0, void 0, void 0, function* () {
+    const result = yield user_model_1.User.findOneAndUpdate({
+        _id: id,
+    }, payload, {
         new: true,
-        runValidators: true,
     });
     return result;
 });

@@ -35,11 +35,16 @@ const getAllUsers = async (query: Record<string, unknown>) => {
   };
 };
 
-const updateUserById = async (userId: string, payload: Partial<IUser>) => {
-  const result = await User.findByIdAndUpdate({ _id: userId }, payload, {
-    new: true,
-    runValidators: true,
-  });
+const updateUserById = async (id: string, payload: Partial<IUser>) => {
+  const result = await User.findOneAndUpdate(
+    {
+      _id: id,
+    },
+    payload,
+    {
+      new: true,
+    }
+  );
   return result;
 };
 

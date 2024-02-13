@@ -15,9 +15,8 @@ router.post(
 );
 
 router.get("/", UserController.getAllUsers);
-
-router.get("/:id", UserController.findUserById);
 router.get("/:email", UserController.findUserByEamil);
+router.get("/:id", UserController.findUserById);
 
 router.patch(
   "/:id",
