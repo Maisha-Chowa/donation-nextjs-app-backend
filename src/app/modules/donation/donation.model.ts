@@ -35,7 +35,8 @@ const donationSchema = new Schema<Idonation>(
 
     donators: [
       {
-        type: String,
+        email: { type: String },
+        donatedAmount: { type: String },
       },
     ],
   },

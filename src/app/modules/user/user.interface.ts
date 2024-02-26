@@ -7,5 +7,5 @@ export interface IUser {
   password: string;
   role: "admin" | "user";
   donatedAmount: string;
-  donations: DonationID;
+  donations: [DonationID];
 }

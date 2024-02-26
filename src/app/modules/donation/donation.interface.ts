@@ -1,6 +1,7 @@
 import { Model } from "mongoose";
 export interface Donator {
-  type: string;
+  email:string;
+  donatedAmount:string
 }
 export type Idonation = {
   title: string;
@@ -10,7 +11,7 @@ export type Idonation = {
   amount: string;
   collectedAmount: string;
   endDate: string;
-  donators: Donator[];
+  donators: [Donator];
 };
 
 export type DonationModel = Model<Idonation>;
